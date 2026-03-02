@@ -4,8 +4,8 @@ import historyRoute from "./history.route"
 
 const routes = Router()
 
-routes.use("/auth", authRoute)
-routes.use("/history", historyRoute)
+routes.use(authRoute)
+routes.use(historyRoute)
 
 
 export default routes
