@@ -10,6 +10,7 @@ logs
 *.log
 
 
+
 # Editor files
 .vscode/
 .idea/

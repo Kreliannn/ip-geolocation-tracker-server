@@ -5,7 +5,11 @@ import { accountInterface, accountInterfaceInput } from "../types/accounts.type"
 export class AccountService {
 
   static async create(data : accountInterfaceInput) {
-    await AccountModel.create(data)
+    return await AccountModel.create(data)
+  }
+
+  static async getAll() {
+    return AccountModel.find();
   }
 
   static async get(id : string) {

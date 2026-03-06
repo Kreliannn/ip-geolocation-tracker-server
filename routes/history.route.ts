@@ -4,7 +4,8 @@ import { authenticateJWT } from "../middleware/auth";
 
 const route = Router()
 
+route.get("/history", authenticateJWT,  HistoryController.getHistory)
+route.post("/history/delete", authenticateJWT,  HistoryController.deleteHistory)
 route.post("/history/:ip", authenticateJWT,  HistoryController.recordHistory)
-route.delete("/history", authenticateJWT,  HistoryController.deleteHistory)
 
 export default route

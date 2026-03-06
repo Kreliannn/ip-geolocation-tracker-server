@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import routes from "./routes/route"
 import cors from "cors"
 import dotenv from 'dotenv';
-import axios from "axios";
+import { seedUser , getAllUser} from './seeders/seedAccount';
 
 dotenv.config();
 
@@ -24,6 +24,27 @@ app.get('/', async (request: Request, response: Response) => {
   response.send("working server...........")
 });
 
+app.post('/api/seeder', async (request: Request, response: Response) => {
+  try {
+    const user = await seedUser()
+    response.send(user)
+  } catch (err) {
+      console.error(err);
+      response.status(500).json({ message: 'Server error' });
+      return
+    }
+});
+
+app.get('/api/availableAccounts', async (request: Request, response: Response) => {
+  try {
+    const users = await getAllUser()
+    response.send(users)
+  } catch (err) {
+      console.error(err);
+      response.status(500).json({ message: 'Server error' });
+      return
+    }
+});
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

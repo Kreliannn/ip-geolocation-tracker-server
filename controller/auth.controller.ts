@@ -1,10 +1,9 @@
 import { Response, response } from "express";
 import { AuthRequest } from "../types/request.type";
 import { AccountService } from "../services/account.service";
-import { accountInterface, accountInterfaceInput } from "../types/accounts.type";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import dotenv from 'dotenv';
+
 
 export class AuthController {
 
@@ -31,7 +30,7 @@ export class AuthController {
 
       const token = jwt.sign(
         { id: user._id, email: user.email, name: user.name },
-        process.env.JWT_SECRET || 'secretkey',
+        process.env.JWT_SECRET || 'secret',
         { expiresIn: '1d' }
       );
 
@@ -52,16 +51,6 @@ export class AuthController {
     }
   }
 
-  static getAccount = async (request : AuthRequest , response : Response) => {
-    try {
-      const account = request.account
-      response.send(account)
-    } catch (err) {
-      console.error(err);
-      response.status(500).json({ message: 'Server error' });
-      return
-    }
-  }
 
 
 }
