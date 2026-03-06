@@ -4,7 +4,6 @@ import routes from "./routes/route"
 import cors from "cors"
 import dotenv from 'dotenv';
 import { seedUser } from './seeders/seedAccount';
-import axios from 'axios';
 
 dotenv.config();
 
