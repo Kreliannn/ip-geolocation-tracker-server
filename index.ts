@@ -4,6 +4,7 @@ import routes from "./routes/route"
 import cors from "cors"
 import dotenv from 'dotenv';
 import { seedUser } from './seeders/seedAccount';
+import axios from 'axios';
 
 dotenv.config();
 
@@ -21,7 +22,13 @@ app.use("/api", routes)
 
 
 app.get('/', async (request: Request, response: Response) => {
+ 
   response.send("working server...........")
+});
+
+app.get('/test', async (request: Request, response: Response) => {
+  const res = await axios.get("https://ipinfo.io//geo")
+  response.send(res.data)
 });
 
 
