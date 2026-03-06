@@ -30,7 +30,6 @@ export const authenticateJWT = async (request: AuthRequest, response: Response, 
             email : account.email,
             name : account.name,
             password : account.password,
-            history : account.history
         }
         request.account = accData
     }

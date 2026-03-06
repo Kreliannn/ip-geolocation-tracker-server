@@ -52,5 +52,16 @@ export class AuthController {
     }
   }
 
+  static getAccount = async (request : AuthRequest , response : Response) => {
+    try {
+      const account = request.account
+      response.send(account)
+    } catch (err) {
+      console.error(err);
+      response.status(500).json({ message: 'Server error' });
+      return
+    }
+  }
+
 
 }

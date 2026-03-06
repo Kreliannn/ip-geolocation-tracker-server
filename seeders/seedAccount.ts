@@ -8,7 +8,7 @@ dotenv.config();
 
 export const seedUser = async () => {
   try {
-    const existing = await AccountService.findByEmail('krel@gmail.com');
+    const existing = await AccountService.findByEmail('krelian@gmail.com');
     if (existing) {
       console.log('User already exists. Seeder skipped.');
       process.exit();
@@ -20,7 +20,6 @@ export const seedUser = async () => {
       name: 'krelian',
       email: 'krelian@gmail.com',
       password: hashedPassword,
-      history : []
     })
 
     console.log('✅ User seeded successfully!');

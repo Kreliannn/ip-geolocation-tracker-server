@@ -17,13 +17,4 @@ export class AccountService {
     return account
   }
 
-  static async pushToHistory(id: string, ip: string) {
-    await AccountModel.findByIdAndUpdate(
-        id,
-        { $push: { history: ip } }, 
-        { new: true } 
-    );
-  } 
-
-
 }
